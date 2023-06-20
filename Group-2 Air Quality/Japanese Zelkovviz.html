@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.9.3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.1"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "layer": [
+    {
+      "mark": {"type": "arc", "outerRadius": 120},
+      "encoding": {
+        "color": {
+          "field": "Tree",
+          "legend": null,
+          "scale": {"range": ["lightgreen", "darkgreen"]},
+          "type": "nominal"
+        },
+        "theta": {
+          "field": "Air quality improved (lb/year)",
+          "stack": true,
+          "type": "quantitative"
+        }
+      },
+      "title": {
+        "text": ["Air Quality of Trees in Chester Square Park"],
+        "subtitle": [
+          "Comparing one tree vs all trees in Chester Square Park",
+          "(Air quality improved in pounds per year)"
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "radius": 80, "size": 15},
+      "encoding": {
+        "color": {"value": "black"},
+        "text": {"field": "Air quality improved (lb/year)", "type": "nominal"},
+        "theta": {
+          "field": "Air quality improved (lb/year)",
+          "stack": true,
+          "type": "quantitative"
+        }
+      },
+      "title": {
+        "text": ["Air Quality of Trees in Chester Square Park"],
+        "subtitle": [
+          "Comparing one tree vs all trees in Chester Square Park",
+          "(Air quality improved in pounds per year)"
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "radius": 140, "size": 20},
+      "encoding": {
+        "color": {
+          "field": "Tree",
+          "legend": null,
+          "scale": {"range": ["lightgreen", "darkgreen"]},
+          "type": "nominal"
+        },
+        "text": {"field": "Tree", "type": "nominal"},
+        "theta": {
+          "field": "Air quality improved (lb/year)",
+          "stack": true,
+          "type": "quantitative"
+        }
+      },
+      "title": {
+        "text": ["Air Quality of Trees in Chester Square Park"],
+        "subtitle": [
+          "Comparing one tree vs all trees in Chester Square Park",
+          "(Air quality improved in pounds per year)"
+        ]
+      }
+    }
+  ],
+  "data": {"name": "data-718f403a6b86a9d1425e5ea2d79e1391"},
+  "height": 400,
+  "width": 400,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json",
+  "datasets": {
+    "data-718f403a6b86a9d1425e5ea2d79e1391": [
+      {"Tree": "Japanese Zelkov", "Air quality improved (lb/year)": 1},
+      {
+        "Tree": "Total Trees in Chester Square Park",
+        "Air quality improved (lb/year)": 43.1
+      }
+    ]
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
