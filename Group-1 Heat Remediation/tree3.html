@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-67b546236017bb1d61226b0e28f29d25"}, "mark": {"type": "text", "align": "center", "baseline": "bottom", "dx": 20, "size": 20}, "encoding": {"row": {"field": "country", "title": "Tree Type", "type": "nominal"}, "text": {"field": "emoji", "type": "nominal"}, "tooltip": [{"field": "count", "type": "quantitative"}], "x": {"axis": null, "field": "animal", "type": "ordinal"}, "y": {"axis": null, "field": "x", "type": "ordinal"}}, "transform": [{"calculate": "{'coffee':'\u2615\ufe0f','one':'23','two':'24','three':'8'}[datum.animal]", "as": "emoji"}, {"window": [{"op": "rank", "field": "", "as": "x"}], "groupby": ["country"]}], "width": 250, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-67b546236017bb1d61226b0e28f29d25": [{"country": "Japanese Zelkova", "animal": "coffee", "count": 8}, {"country": "Japanese Zelkova", "animal": "coffee", "count": 7}, {"country": "Japanese Zelkova", "animal": "coffee", "count": 6}, {"country": "Japanese Zelkova", "animal": "coffee", "count": 5}, {"country": "Japanese Zelkova", "animal": "coffee", "count": 4}, {"country": "Japanese Zelkova", "animal": "coffee", "count": 3}, {"country": "Japanese Zelkova", "animal": "coffee", "count": 2}, {"country": "Japanese Zelkova", "animal": "coffee", "count": 1}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
