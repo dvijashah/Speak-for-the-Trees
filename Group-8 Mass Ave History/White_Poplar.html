@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-7ce1f8efe841f53467def99daadb7eda"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "Map", "title": "Year", "type": "nominal"}, "y": {"aggregate": "sum", "field": "Trees", "title": "Number of Trees in the Park", "type": "quantitative"}}, "title": "Trees in Chester Square Park in 1850 vs. 2023"}, {"data": {"name": "data-2292980d4fac0110c1fd4dd1b975ae8d"}, "mark": {"type": "bar"}, "encoding": {"color": {"value": "red"}, "x": {"field": "Map", "type": "nominal"}, "y": {"field": "Trees", "type": "quantitative"}}}], "height": 150, "title": "Trees in Chester Square Park in 1850 vs. 2023: White Poplar", "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-7ce1f8efe841f53467def99daadb7eda": [{"Building": 527, "Trees": 2, "Map": 1850}, {"Building": 529, "Trees": 3, "Map": 1850}, {"Building": 531, "Trees": 3, "Map": 1850}, {"Building": 533, "Trees": 2, "Map": 1850}, {"Building": 535, "Trees": 3, "Map": 1850}, {"Building": 537, "Trees": 2, "Map": 1850}, {"Building": 539, "Trees": 1, "Map": 1850}, {"Building": 541, "Trees": 4, "Map": 1850}, {"Building": 543, "Trees": 2, "Map": 1850}, {"Building": 545, "Trees": 2, "Map": 1850}, {"Building": 547, "Trees": 4, "Map": 1850}, {"Building": 549, "Trees": 3, "Map": 1850}, {"Building": 551, "Trees": 0, "Map": 1850}, {"Building": 553, "Trees": 3, "Map": 1850}, {"Building": 555, "Trees": 3, "Map": 1850}, {"Building": 557, "Trees": 1, "Map": 1850}, {"Building": 559, "Trees": 3, "Map": 1850}, {"Building": 561, "Trees": 1, "Map": 1850}, {"Building": 527, "Trees": 0, "Map": 2023}, {"Building": 529, "Trees": 0, "Map": 2023}, {"Building": 531, "Trees": 0, "Map": 2023}, {"Building": 533, "Trees": 0, "Map": 2023}, {"Building": 535, "Trees": 1, "Map": 2023}, {"Building": 537, "Trees": 2, "Map": 2023}, {"Building": 539, "Trees": 0, "Map": 2023}, {"Building": 541, "Trees": 0, "Map": 2023}, {"Building": 543, "Trees": 2, "Map": 2023}, {"Building": 545, "Trees": 2, "Map": 2023}, {"Building": 547, "Trees": 1, "Map": 2023}, {"Building": 549, "Trees": 0, "Map": 2023}, {"Building": 551, "Trees": 2, "Map": 2023}, {"Building": 553, "Trees": 1, "Map": 2023}, {"Building": 555, "Trees": 1, "Map": 2023}, {"Building": 557, "Trees": 2, "Map": 2023}, {"Building": 559, "Trees": 2, "Map": 2023}, {"Building": 561, "Trees": 0, "Map": 2023}, {"Building": 528, "Trees": 2, "Map": 1850}, {"Building": 530, "Trees": 3, "Map": 1850}, {"Building": 532, "Trees": 3, "Map": 1850}, {"Building": 534, "Trees": 1, "Map": 1850}, {"Building": 536, "Trees": 2, "Map": 1850}, {"Building": 538, "Trees": 3, "Map": 1850}, {"Building": 540, "Trees": 1, "Map": 1850}, {"Building": 542, "Trees": 4, "Map": 1850}, {"Building": 544, "Trees": 2, "Map": 1850}, {"Building": 546, "Trees": 3, "Map": 1850}, {"Building": 548, "Trees": 4, "Map": 1850}, {"Building": 550, "Trees": 1, "Map": 1850}, {"Building": 552, "Trees": 3, "Map": 1850}, {"Building": 554, "Trees": 2, "Map": 1850}, {"Building": 556, "Trees": 2, "Map": 1850}, {"Building": 558, "Trees": 2, "Map": 1850}, {"Building": 560, "Trees": 3, "Map": 1850}, {"Building": 562, "Trees": 2, "Map": 1850}, {"Building": 528, "Trees": 0, "Map": 2023}, {"Building": 530, "Trees": 0, "Map": 2023}, {"Building": 532, "Trees": 0, "Map": 2023}, {"Building": 534, "Trees": 1, "Map": 2023}, {"Building": 536, "Trees": 0, "Map": 2023}, {"Building": 538, "Trees": 2, "Map": 2023}, {"Building": 540, "Trees": 0, "Map": 2023}, {"Building": 542, "Trees": 1, "Map": 2023}, {"Building": 544, "Trees": 4, "Map": 2023}, {"Building": 546, "Trees": 0, "Map": 2023}, {"Building": 548, "Trees": 3, "Map": 2023}, {"Building": 550, "Trees": 1, "Map": 2023}, {"Building": 552, "Trees": 2, "Map": 2023}, {"Building": 554, "Trees": 2, "Map": 2023}, {"Building": 556, "Trees": 1, "Map": 2023}, {"Building": 558, "Trees": 2, "Map": 2023}, {"Building": 560, "Trees": 0, "Map": 2023}, {"Building": 562, "Trees": 0, "Map": 2023}], "data-2292980d4fac0110c1fd4dd1b975ae8d": [{"Map": "2023", "Trees": 1}, {"Map": "1850", "Trees": 0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
