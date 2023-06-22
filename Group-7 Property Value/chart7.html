@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-3eea1e016abb49af51d6a2b953da88b2"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Zip Code 1", "legend": null, "title": "Zip Code", "type": "nominal"}, "x": {"field": "Zip Code 1", "title": "Zipcode", "type": "nominal"}, "y": {"field": "Total Assessed Valuation", "title": "Total Assessed Valuation ($)", "type": "quantitative"}}, "title": "Property Value per Zip Code", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-3eea1e016abb49af51d6a2b953da88b2": [{"Zip Code": 2118, "Total Assessed Valuation": 13958162656, "Zip Code 1": "02118"}, {"Zip Code": 2119, "Total Assessed Valuation": 5426476941, "Zip Code 1": "02119"}, {"Zip Code": 2120, "Total Assessed Valuation": 3442832716, "Zip Code 1": "02120"}, {"Zip Code": 2122, "Total Assessed Valuation": 4220828986, "Zip Code 1": "02122"}, {"Zip Code": 2124, "Total Assessed Valuation": 8575706762, "Zip Code 1": "02124"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
