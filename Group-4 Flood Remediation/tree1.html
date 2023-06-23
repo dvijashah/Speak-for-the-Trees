@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.9.3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.1"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "config": {
+    "view": {"continuousWidth": 300, "continuousHeight": 300},
+    "title": {"anchor": "start", "color": "black", "fontSize": 20, "offset": 20}
+  },
+  "layer": [
+    {
+      "mark": {"type": "arc", "cornerRadius": 5, "innerRadius": 100},
+      "encoding": {
+        "color": {
+          "field": "Categories",
+          "legend": null,
+          "scale": {
+            "domain": ["Absorption", "Remaining"],
+            "range": ["#1f77b4", "white"]
+          },
+          "type": "nominal"
+        },
+        "theta": {
+          "field": "Absorption",
+          "scale": {
+            "domain": [0, 255],
+            "range": [-1.5707963267948966, 1.5707963267948966]
+          },
+          "stack": true,
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "Name", "type": "nominal"},
+          {"field": "Absorption", "type": "quantitative"},
+          {"field": "Diameter", "type": "quantitative"}
+        ]
+      },
+      "title": {
+        "text": ["This is a Northern Red Oak", "It absorbs: 205.00 Gallons"],
+        "subtitle": [
+          "This tree prevents 0.60 cubic meters of stormwater runoff."
+        ],
+        "subtitleColor": "black",
+        "anchor": "start"
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 26, "radius": 20},
+      "encoding": {
+        "color": {
+          "field": "Categories",
+          "legend": null,
+          "scale": {
+            "domain": ["Absorption", "Remaining"],
+            "range": ["#1f77b4", "white"]
+          },
+          "type": "nominal"
+        },
+        "text": {
+          "condition": {
+            "test": "(datum.Categories === 'Absorption')",
+            "value": "205 Gallons"
+          },
+          "value": ""
+        },
+        "theta": {
+          "field": "Absorption",
+          "scale": {
+            "domain": [0, 255],
+            "range": [-1.5707963267948966, 1.5707963267948966]
+          },
+          "stack": true,
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "Name", "type": "nominal"},
+          {"field": "Absorption", "type": "quantitative"},
+          {"field": "Diameter", "type": "quantitative"}
+        ]
+      },
+      "title": {
+        "text": ["This is a Northern Red Oak", "It absorbs: 205.00 Gallons"],
+        "subtitle": [
+          "This tree prevents 0.60 cubic meters of stormwater runoff."
+        ],
+        "subtitleColor": "black",
+        "anchor": "start"
+      }
+    }
+  ],
+  "data": {"name": "data-ef0c00b12e5d8e7ddeb812a679d773de"},
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json",
+  "datasets": {
+    "data-ef0c00b12e5d8e7ddeb812a679d773de": [
+      {"Categories": "Remaining", "Absorption": 50, "Name": "", "Diameter": 0},
+      {
+        "Categories": "Absorption",
+        "Absorption": 205,
+        "Name": "Northern Red Oak",
+        "Diameter": 20.5
+      }
+    ]
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
