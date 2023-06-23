@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>DS4200 Service Learning Project: Speak for the Trees </title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+        <style>
+            #vis-heat.vega-embed {
+              max-width: 10%;
+              display: flex;
+            }
+        
+            #vis-heat.vega-embed details,
+            #vis-heat.vega-embed details summary {
+              position: relative;
+            }
+          </style>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.17.0"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-toggleable-lg navbar-dark bg-dark">
+            <div class="container px-lg-5">
+                <a class="navbar-brand" href="#!">DS4200 QR code demo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#heat">Heat Remediation</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#air">Air Quality</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#noise">Noise Pollution</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#flooding">Flooding Remediation</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#biodiversity">Biodiversity</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#mental">Mental Health</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#property">Property Value</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#history">Mass Ave History</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#current">Mass Ave Current</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="py-5">
+            <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                    <div class="m-4 m-lg-5">
+                        <h1 class="display-5 fw-bold">Tree information</h1>
+                        <p class="fs-4">Tree name: Northern Red Oak (2950114) </p>
+                        <img class="img-fluid" max-width="100%" src="img/northern-red-oak.jpeg">
+                        <!-- <a class="btn btn-primary btn-lg" href="#!"></a> -->
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Page Content-->
+        <section class="pt-4">
+            <div class="container px-lg-5">
+                <!-- Page Features-->
+                <div class="row gx-lg-5">
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100" id="heat">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-sun"></i></div>
+                                <h2 class="fs-4 fw-bold">Heat Remediation</h2>
+                                <div id="vis-heat"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100" id="air">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-wind"></i></div>
+                                <h2 class="fs-4 fw-bold">Air Quality</h2>
+                                <div class="col" id="vis-air"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100" id="noise">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-headphones"></i></div>
+                                <h2 class="fs-4 fw-bold">Noise Pollution</h2>
+                                <div id="vis-noise"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100" id="flooding">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-water"></i></div>
+                                <h2 class="fs-4 fw-bold">Flooding Remediation</h2>
+                                <div id="vis-flooding"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100" id="biodiversity">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-tree"></i></div>
+                                <h2 class="fs-4 fw-bold">Biodiversity</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100" id="mental">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-emoji-smile"></i></div>
+                                <h2 class="fs-4 fw-bold">Mental Health</h2>
+                                <div id="vis-mental">
+                                    <p>Being near this Northern Red Oak can decrease stress levels by 16%!<br><a href="https://www.sciencedirect.com/journal/urban-forestry-and-urban-greening/vol/64/suppl/C">(Urban Forestry and Greening)</a></p>
+                                    <img src="Group-6 Mental Health/download.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100" id="property">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-credit-card"></i></div>
+                                <h2 class="fs-4 fw-bold">Property Value</h2>
+                                <div id="vis-property"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100" id="history">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-reply"></i></div>
+                                <h2 class="fs-4 fw-bold">Mass Ave History</h2>
+                                <div id="vis-history"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100" id="current">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-house"></i></div>
+                                <h2 class="fs-4 fw-bold">Mass Ave Current</h2>
+                                <div id="vis-current"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        
+        <script>
+            // Group 1: Heat 
+            (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 100, "continuousHeight": 100}}, "data": {"name": "data-36651ae36ff96bba11dc02aa29a04cec"}, "mark": {"type": "text", "align": "center", "baseline": "middle", "dx": 5, "dy": 20, "size": 20}, "encoding": {"row": {"field": "country", "title": "Trees", "type": "nominal"}, "text": {"field": "emoji", "type": "nominal"}, "tooltip": [{"field": "animal", "type": "nominal"}], "x": {"axis": null, "field": "x", "type": "ordinal"}, "y": {"axis": null, "field": "animal", "type": "ordinal"}}, "height": 50, "title": "Number of Coffees You Can Buy Using Cooling Cost Saving from this Tree", "transform": [{"calculate": "{'coffee':'\u2615\ufe0f','one':'23','two':'24','three':'8'}[datum.animal]", "as": "emoji"}, {"window": [{"op": "rank", "field": "", "as": "x"}], "groupby": ["country"]}], "width": 250, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-36651ae36ff96bba11dc02aa29a04cec": [{"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "coffee"}, {"country": "Tree 1", "animal": "one"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis=heat');
+      vegaEmbed("#vis-heat", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+            // Group 2: Air 
+
+            const spec = {
+                "config": {"view": {"continuousWidth": 200, "continuousHeight": 200}},
+                "layer": [
+                    {
+                    "mark": {"type": "arc", "outerRadius": 120},
+                    "encoding": {
+                        "color": {
+                        "field": "Tree",
+                        "legend": null,
+                        "scale": {"range": ["lightgreen", "darkgreen"]},
+                        "type": "nominal"
+                        },
+                        "theta": {
+                        "field": "Air quality improved (lb/year)",
+                        "stack": true,
+                        "type": "quantitative"
+                        }
+                    },
+                    "title": {
+                        "text": ["Pounds of Pollution Removed by Trees in Chester Square Park"],
+                        "subtitle": ["(Air quality improved lb/year)"]
+                    }
+                    },
+                    {
+                    "mark": {"type": "text", "radius": 80, "size": 15},
+                    "encoding": {
+                        "color": {"value": "black"},
+                        "text": {"field": "Air quality improved (lb/year)", "type": "nominal"},
+                        "theta": {
+                        "field": "Air quality improved (lb/year)",
+                        "stack": true,
+                        "type": "quantitative"
+                        }
+                    },
+                    "title": {
+                        "text": ["Pounds of Pollution Removed by Trees in Chester Square Park"],
+                        "subtitle": ["(Air quality improved lb/year)"]
+                    }
+                    },
+                    {
+                    "mark": {"type": "text", "radius": 140, "size": 20},
+                    "encoding": {
+                        "color": {
+                        "field": "Tree",
+                        "legend": null,
+                        "scale": {"range": ["lightgreen", "darkgreen"]},
+                        "type": "nominal"
+                        },
+                        "text": {"field": "Tree", "type": "nominal"},
+                        "theta": {
+                        "field": "Air quality improved (lb/year)",
+                        "stack": true,
+                        "type": "quantitative"
+                        }
+                    },
+                    "title": {
+                        "text": ["Pounds of Pollution Removed by Trees in Chester Square Park"],
+                        "subtitle": ["(Air quality improved lb/year)"]
+                    }
+                    }
+                ],
+                "data": {"name": "data-d3fb9a23ca9bcf066d8caf0e2c9d4e16"},
+                "height": 250,
+                "width": 250,
+                "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json",
+                "datasets": {
+                    "data-d3fb9a23ca9bcf066d8caf0e2c9d4e16": [
+                    {"Tree": "Northern Red Oak", "Air quality improved (lb/year)": 3.2},
+                    {
+                        "Tree": "Total Trees in Chester Square Park",
+                        "Air quality improved (lb/year)": 40.9
+                    }
+                    ]
+                }
+            };
+            vegaEmbed("#vis-air", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+
+            // Group 3 Noise pollution
+
+            (function(vegaEmbed) {
+                var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-d273694c6f8ee03f90fafe0895cab311"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Noise Made", "type": "nominal"}, "x": {"field": "Decible", "type": "quantitative"}, "y": {"field": "Noise Made", "type": "nominal"}}, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-d273694c6f8ee03f90fafe0895cab311": [{"Noise Made": "Ambulance", "Decible": 130.0}, {"Noise Made": "Car", "Decible": 80.0}, {"Noise Made": "Bus", "Decible": 95.0}, {"Noise Made": "Northern Red Oak", "Decible": -9.978814756}]}};
+                var embedOpt = {"mode": "vega-lite"};
+          
+                function showError(el, error){
+                    el.innerHTML = ('<div style="color:red;">'
+                                    + '<p>JavaScript Error: ' + error.message + '</p>'
+                                    + "<p>This usually means there's a typo in your chart specification. "
+                                    + "See the javascript console for the full traceback.</p>"
+                                    + '</div>');
+                    throw error;
+                }
+                const el = document.getElementById('vis-noise');
+                vegaEmbed("#vis-noise", spec, embedOpt)
+                  .catch(error => showError(el, error));
+              })(vegaEmbed);
+
+              // Group 4: Flood
+
+              // Group 5: Bio
+
+              // Group 6: Mental
+
+              // Group 7: Property
+
+              // Group 8: Mass Ave History
+
+              // Group 9: Mass Ave Current
+                        (function(vegaEmbed) {
+                var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-5d60e4234d3db09a4aea37ad3638fea6"}, "mark": {"type": "bar"}, "encoding": {"color": {"condition": {"test": "(datum.CommonName === 'Northern red oak')", "value": "red"}, "value": "lightgrey"}, "tooltip": [{"field": "CommonName", "type": "nominal"}, {"field": "Count", "type": "quantitative"}], "x": {"field": "Count", "title": "Tree Count", "type": "quantitative"}, "y": {"field": "CommonName", "sort": "-x", "title": "Tree Species", "type": "ordinal"}}, "params": [{"name": "param_21", "select": {"type": "interval"}}], "title": "Top Tree Species in Boston", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-5d60e4234d3db09a4aea37ad3638fea6": [{"CommonName": "Honeylocust", "Count": 812}, {"CommonName": "Norway maple", "Count": 370}, {"CommonName": "Green ash", "Count": 312}, {"CommonName": "Littleleaf linden", "Count": 291}, {"CommonName": "Red maple", "Count": 281}, {"CommonName": "Callery pear", "Count": 251}, {"CommonName": "London planetree", "Count": 244}, {"CommonName": "Zelkova", "Count": 228}, {"CommonName": "Elm", "Count": 162}, {"CommonName": "Northern red oak", "Count": 141}, {"CommonName": "Swamp white oak", "Count": 96}, {"CommonName": "White Poplar", "Count": 88}]}};
+                var embedOpt = {"mode": "vega-lite"};
+
+                function showError(el, error){
+                    el.innerHTML = ('<div style="color:red;">'
+                                    + '<p>JavaScript Error: ' + error.message + '</p>'
+                                    + "<p>This usually means there's a typo in your chart specification. "
+                                    + "See the javascript console for the full traceback.</p>"
+                                    + '</div>');
+                    throw error;
+                }
+                const el = document.getElementById('vis-current');
+                vegaEmbed("#vis-current", spec, embedOpt)
+                    .catch(error => showError(el, error));
+                })(vegaEmbed);
+
+        </script>
+    </body>
+    </body>
+</html>
